@@ -1,0 +1,47 @@
+.text-input div {
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  overflow: hidden;
+  display: inline-block;
+  width: 80%;
+  margin-top: 10px;
+}
+
+.text-input input  {
+  flex-grow: 1;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  background-color: #fff;
+  width: 100%;
+}
+
+.desktop-header .text-input input {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.mobile-header .text-input input.search-area-disabled {
+  background-color: transparent;
+  color: #FFF
+}
+
+
+.mobile-header .text-input button {
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #333;
+  height: 60px;
+  width: 20%;
+}
+.desktop-header .text-input button {
+  width: 20%;
+  border: 1px solid #ccc;
+}

@@ -1,13 +1,22 @@
+*, *::after, *::before { box-sizing: border-box; }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+.w100 { width: 100%; }
+.w80 { width: 80%; }
+.w50 { width: 50%; }
+.w33 { width: 33.33%; }
+.w25 { width: 25%; }
+.w20 { width: 20%; }
+.w10 { width: 10%; }
+.w5 { width: 5%; }
+.w1 { width: 1%; }
+.h100 { height: 100%; }
+.inline { display: inline-block; }
