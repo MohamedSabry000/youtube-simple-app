@@ -5,8 +5,10 @@
   color: white;
   overflow: hidden;
   display: inline-block;
-  width: 80%;
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .text-input input  {
@@ -24,6 +26,7 @@
 .desktop-header .text-input input {
   width: 100%;
   border: 1px solid #ccc;
+  border-radius: 5px 1px 1px 5px;
 }
 
 .mobile-header .text-input input.search-area-disabled {
@@ -42,6 +45,12 @@
   width: 20%;
 }
 .desktop-header .text-input button {
-  width: 20%;
+  width: 15%;
   border: 1px solid #ccc;
+  display: inline-block;
+  height: 40px;
+  border-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

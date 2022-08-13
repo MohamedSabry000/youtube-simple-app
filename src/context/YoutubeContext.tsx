@@ -6,6 +6,7 @@ export const YoutubeContext = React.createContext<YoutubeContextType | null>(nul
 const YoutubeProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
   const [items, setItems] = React.useState<IYoutube[]>([]);
   const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState('');
 
   const saveVideos = (snippet: IYoutube[]) => {
     setItems(snippet);
@@ -13,10 +14,7 @@ const YoutubeProvider: React.FC<{children: React.ReactNode}> = ({ children }) =>
   const addVideos = (snippet: IYoutube[]) => {
     setItems([...items, ...snippet]);
   };
-  const setLoad = (loading: boolean) => {
-    setLoading(loading);
-  }
-  return <YoutubeContext.Provider value={{ items, saveVideos, addVideos, setLoad }}>{children}</YoutubeContext.Provider>;
+  return <YoutubeContext.Provider value={{ items, loading, error, setError, saveVideos, addVideos, setLoading }}>{children}</YoutubeContext.Provider>;
 };
 
 export default YoutubeProvider;

@@ -14,9 +14,12 @@ export interface IYoutube {
 }
 export type YoutubeContextType = {
   items: IYoutube[];
+  loading: boolean;
+  error: string;
   // filtered: IYoutube[];
   saveVideos: (snippet: IYoutube[]) => void;
   addVideos: (snippet: IYoutube[]) => void;
-  setLoad: (loading: boolean) => void;
+  setLoading: (loading: boolean) => void;
+  setError: (error: string) => void;
   // filter: (query: number) => void;
 };

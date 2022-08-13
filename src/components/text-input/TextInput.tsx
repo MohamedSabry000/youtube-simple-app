@@ -7,35 +7,18 @@ import { YoutubeContext } from "../../context/YoutubeContext";
 
 import "./TextInput.css";
 
-type TextInputProps = {
-  value: string;
-  onChange: (event: React.SetStateAction<string>) => void;
-};
-
-export default function TextInput({ value, onChange }: TextInputProps) {
-  const { saveVideos, setLoad } = useContext(
+export default function TextInput({search}: {search: (query: string) => void}) {
+  const { saveVideos, setLoading } = useContext(
     YoutubeContext
   ) as YoutubeContextType;
+  const [text, setText] = React.useState('')
   const [searchArea, setSearchArea] = React.useState(true);
   const textInput = useRef<HTMLInputElement>(null);
   const matches = useMediaQuery("(max-width: 768px)");
 
-  const search = () => {
+  const searching = () => {
     if (searchArea || !matches) {
-      getList(value)
-        .then((data) => {
-          setLoad(true);
-          console.log(data);
-          saveVideos(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          setLoad(false);
-          setSearchArea(false);
-        });
-
+      search(text)
       matches && textInput.current && (textInput.current.disabled = true);
     } else {
       matches && textInput.current && (textInput.current.disabled = false);
@@ -49,14 +32,14 @@ export default function TextInput({ value, onChange }: TextInputProps) {
         <input
           ref={textInput}
           type="search"
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
+          value={text}
+          onChange={(event) => setText(event.target.value)}
           className={searchArea ? "search-area" : "search-area-disabled"}
         />
+        <button onClick={searching}>
+          <img src={Search} alt="search button" className="h80" />
+        </button>
       </div>
-      <button onClick={search}>
-        <img src={Search} alt="search button" className="h100" />
-      </button>
     </div>
   );
 }
