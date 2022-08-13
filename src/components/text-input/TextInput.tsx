@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
+import { useMediaQuery } from "usehooks-ts";
+import { YoutubeContextType } from "../../@types/youtube";
 import { getList } from "../../api";
 import Search from "../../assets/search.png";
+import { YoutubeContext } from "../../context/YoutubeContext";
 
 import "./TextInput.css";
 
@@ -10,30 +13,46 @@ type TextInputProps = {
 };
 
 export default function TextInput({ value, onChange }: TextInputProps) {
-
+  const { saveVideos, setLoad } = useContext(
+    YoutubeContext
+  ) as YoutubeContextType;
   const [searchArea, setSearchArea] = React.useState(true);
-  const search = () =>{
-    getList().then(data => {
-      console.log(data);
+  const textInput = useRef<HTMLInputElement>(null);
+  const matches = useMediaQuery("(max-width: 768px)");
 
-    }).catch(err => {
-      console.log(err);
-    }).finally(() => {
-      setSearchArea(false);
-    })
+  const search = () => {
+    if (searchArea || !matches) {
+      getList(value)
+        .then((data) => {
+          setLoad(true);
+          console.log(data);
+          saveVideos(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setLoad(false);
+          setSearchArea(false);
+        });
 
-    setSearchArea(prev => !prev);
-  }
+      matches && textInput.current && (textInput.current.disabled = true);
+    } else {
+      matches && textInput.current && (textInput.current.disabled = false);
+    }
+    setSearchArea((prev) => !prev);
+  };
+
   return (
     <div className="text-input">
       <div>
-      <input
-        type="search"
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className={searchArea ? "search-area" : "search-area-disabled"}
-        disabled={searchArea? false : true}
-      />
+        <input
+          ref={textInput}
+          type="search"
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          className={searchArea ? "search-area" : "search-area-disabled"}
+        />
       </div>
       <button onClick={search}>
         <img src={Search} alt="search button" className="h100" />

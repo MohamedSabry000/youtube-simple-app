@@ -1,6 +1,16 @@
 export interface IYoutube {
-  id: object,
-  snippet: any
+  id: {kind: string, videoId: string, channelId: string, playlistId: string },
+  snippet: {
+    channelId: string,
+    channelTitle: string,
+    description: string,
+    publishTime: string,
+    publishedAt: string,
+    thumbnails: {default: { url: string, width: number, height: number },
+                 medium: { url: string, width: number, height: number },
+                 high: { url: string, width: number, height: number }, }
+    title: string,
+  }
 }
 export type YoutubeContextType = {
   items: IYoutube[];

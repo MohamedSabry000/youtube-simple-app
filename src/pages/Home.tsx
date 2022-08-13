@@ -1,8 +1,10 @@
 import React from 'react'
 import { useMediaQuery } from 'usehooks-ts'
+import Container from '../components/container/Container'
 
 import DesktopHeader from '../components/header/DesktopHeader'
 import MobileHeader from '../components/header/MobileHeader'
+import List from '../components/list/List'
 import TextInput from '../components/text-input/TextInput'
 
 export default function Home() {
@@ -23,7 +25,9 @@ export default function Home() {
           </DesktopHeader>
         )
       }
-      <List />
+      <Container>
+        <List />
+      </Container>
     </div>
   )
 }

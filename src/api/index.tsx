@@ -7,7 +7,7 @@ export const getInitial = async () : Promise<IYoutube[]> => {
 }
 
 export const getList = async (query: string) : Promise<IYoutube[]> => {
-  const {data} = await youtube.get('/search', {
+  const {data} = await youtube.get('/', {
     params: {
       q: query
     }
