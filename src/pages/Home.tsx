@@ -11,14 +11,19 @@ export default function Home() {
   const matches = useMediaQuery('(max-width: 768px)')
 
   return (
-    matches ? (
-      <MobileHeader>
-        <TextInput value={text} onChange={setText} />
-      </MobileHeader>
-    ) : (
-      <DesktopHeader>
-        <TextInput value={text} onChange={setText} />
-      </DesktopHeader>
-    )
+    <div className="home">
+      {
+        matches ? (
+          <MobileHeader>
+            <TextInput value={text} onChange={setText} />
+          </MobileHeader>
+        ) : (
+          <DesktopHeader>
+            <TextInput value={text} onChange={setText} />
+          </DesktopHeader>
+        )
+      }
+      <List />
+    </div>
   )
 }
