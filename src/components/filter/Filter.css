@@ -1,0 +1,36 @@
+.filter {
+  display: flex;
+  height: 50px;
+}
+.items-number {
+  flex: 1;
+}
+.filter-button button {
+  background: transparent;
+  border: navajowhite;
+  color: #333;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  height: 31px;
+  align-items: center;
+}
+.filter-button button img {
+  margin-right: 12px;
+  filter: opacity(0.5);
+}
+
+
+.filter-direct-button {
+  flex: 1;
+  display: flex;
+  margin-bottom: 4px;
+}
+.filter-direct-button select{
+  background: #CCC;
+  border: 1px solid #777;
+  border-radius: 5px;
+  flex: 1;
+  margin-right: 16px;
+}
